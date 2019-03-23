@@ -19,7 +19,7 @@ then
 	sleep 5
 elif [[ $1 == 'tcp' ]]
 then
-	ssh -R $2:localhost:$port serveo.net &
+	ssh -R $2:localhost:$2 serveo.net &
 	sleep 5
 elif [[ $1 == 'kill' ]]
 then
