@@ -1,0 +1,35 @@
+# protocols:
+# http = port 80, 443; allows for subdomain choosing in $2; no port
+# tcp = all others; no subdomain; port in $2
+# protocols will be in argv(1), or $1
+
+if [[ $1 == 'http' ]]
+then
+	read -p "serveo: Are you sure you want to use ${2} as your SubDomain? " verify
+	if [[ $verify == 'y' || $verify == 'yes' || $verify == 'Y' ]]
+	then
+		k=1
+	else
+		echo "serveo: Quiting..."
+		sleep 2
+		exit 1
+	fi
+
+	ssh -R $2:80:localhost:80 serveo.net &
+	sleep 5
+elif [[ $1 == 'tcp' ]]
+then
+	ssh -R $2:localhost:$port serveo.net &
+	sleep 5
+elif [[ $1 == 'kill' ]]
+then
+	pkill 'ssh'
+	exit 0
+else
+	echo "serveo: $(tput setaf 1)error:$(tput sgr0) Usage:"
+	echo "serveo http <subdomain> $(tput setaf 1)or$(tput sgr0) serveo tcp <port>"
+	exit 1
+fi
+
+echo "To end the serveo session, please run command 'serveo kill'"
+exit 0
