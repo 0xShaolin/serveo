@@ -8,11 +8,11 @@ There are no dependencies for this project besides an ssh daemon. This can be ac
 ## Linux
     git clone https://github.com/0xShaolin/serveo.git
     cd serveo
-    sudo mv serveo /usr/bin && mv serveo /usr/local/bin 
+    sudo cp serveo /usr/bin && cp serveo /usr/local/bin 
 ## Termux
     git clone https://github.com/0xShaolin/serveo.git
     cd serveo
-    mv serveo /data/data/com.termux/files/usr/bin
+    cp serveo /data/data/com.termux/files/usr/bin
     
 # Usage
     serveo http <subdomain>
