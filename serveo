@@ -23,7 +23,7 @@ then
 	sleep 5
 elif [[ $1 == 'kill' ]]
 then
-	echo "[!] Killing all serveo sessions..."
+	echo "$(tput setaf 1)[!] $(tput sgr0)Killing all serveo sessions..."
 	sleep 1
 	pkill 'ssh'
 	exit 0
