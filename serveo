@@ -15,6 +15,7 @@ then
 		exit 1
 	fi
 
+	apachectl start
 	ssh -R $2:80:localhost:80 serveo.net &
 	sleep 5
 elif [[ $1 == 'tcp' ]]
