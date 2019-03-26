@@ -15,7 +15,6 @@ then
 		exit 1
 	fi
 
-	apachectl start
 	ssh -R $2:80:localhost:80 serveo.net &
 	sleep 5
 elif [[ $1 == 'tcp' ]]
@@ -27,6 +26,9 @@ then
 	echo "$(tput setaf 1)[!] $(tput sgr0)Killing all serveo sessions..."
 	sleep 1
 	pkill 'ssh'
+	sleep 1
+	echo "$(tput setaf 1)[!] $(tput sgr0)Stopping apache..."
+	apachectl stop > /dev/null 2>&1
 	exit 0
 else
 	echo "serveo: $(tput setaf 1)error:$(tput sgr0) Usage:"
